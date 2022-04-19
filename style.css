@@ -1,0 +1,73 @@
+body {
+    display: flex;
+    margin-top: 20px;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    flex-direction: row-reverse;
+    justify-content: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Main container */
+#maingrid {
+    display: flex;
+    height: 500px;
+    justify-content: center;
+    flex-direction: column;
+    border: 23px solid black;
+    padding: 6px 15px 4px 15px;
+    gap: 4px;
+    background-color: rgb(189, 186, 186);
+}
+
+/*Calculator display */
+.display {
+    display: flex;
+    height: 75px;
+    font-size: 25px;
+    margin-bottom: -95px;
+    margin-left: 45px; 
+}
+
+/*Button style */
+.buttonNum,
+.buttonOperator,
+.buttonClear {
+    height: 85px;
+    width: 85px;
+    border: 1px solid black;
+    gap: 4px;
+    font-size: 30px;
+}
+
+.buttonOperator {
+    background-color: rgb(238, 121, 25);
+}
+
+.buttonNum {
+    background-color: rgb(236, 201, 139);
+}
+
+.buttonClear {
+    background-color: rgb(107, 106, 106);
+}
+
+/*Containers for button rows */
+.rowtwo,
+.rowthree,
+.rowfour {
+    display: flex;
+    justify-content: space-between;
+    gap: 4px;
+}
+
+.rowone,
+.rowfive {
+    display: flex;
+    justify-content: flex-end;
+    gap: 4px;
+}
+
+
+
