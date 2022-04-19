@@ -12,11 +12,11 @@ body {
 /* Main container */
 #maingrid {
     display: flex;
-    height: 500px;
+    height: 545px;
     justify-content: center;
     flex-direction: column;
     border: 23px solid black;
-    padding: 6px 15px 4px 15px;
+    padding: 4px 15px 4px 15px;
     gap: 4px;
     background-color: rgb(189, 186, 186);
 }
@@ -25,9 +25,13 @@ body {
 .display {
     display: flex;
     height: 75px;
-    font-size: 25px;
-    margin-bottom: -95px;
-    margin-left: 45px; 
+    font-size: 50px;
+    font-weight: bolder;
+    border: 4px solid black;
+    flex-direction: row-reverse;
+    align-items: center;
+    background-color: rgb(78, 76, 76);
+    border-radius: 5px;
 }
 
 /*Button style */
@@ -39,6 +43,7 @@ body {
     border: 1px solid black;
     gap: 4px;
     font-size: 30px;
+    border-radius: 5px;
 }
 
 .buttonOperator {
