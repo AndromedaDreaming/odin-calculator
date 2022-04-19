@@ -46,11 +46,21 @@ body {
     border-radius: 5px;
 }
 
+.buttonNumZero {
+    height: 85px;
+    width: 174px;
+    border: 1px solid black;
+    gap: 4px;
+    font-size: 30px;
+    border-radius: 5px;
+}
+
 .buttonOperator {
     background-color: rgb(238, 121, 25);
 }
 
-.buttonNum {
+.buttonNum,
+.buttonNumZero {
     background-color: rgb(236, 201, 139);
 }
 
