@@ -18,6 +18,10 @@ function divide(num1, num2) {
     return num1 / num2;
 }
 
+function modulo(num1, num2) {
+    return num1 % num2;
+}
+
 //Operate function that takes input and calls an above function
 function operate(mum1, num2, operand) {
     switch (operand) {
