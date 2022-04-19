@@ -34,6 +34,9 @@ function operate(mum1, num2, operand) {
         case '/':
             return num1 / num2;
             break;
+        case '%':
+            return num1 % num2;
+            break;
         default:
             return num1 + num2;    
     }
