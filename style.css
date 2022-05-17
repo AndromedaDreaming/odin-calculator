@@ -16,58 +16,96 @@ body {
     justify-content: center;
     flex-direction: column;
     border: 23px solid black;
-    padding: 4px 15px 4px 15px;
+    border-radius: 10px;
+    padding: 15px;
     gap: 4px;
     background-color: rgb(189, 186, 186);
 }
 
 /*Calculator display */
-.display {
+#display {
     display: flex;
-    height: 75px;
+    height: 65px;
     font-size: 50px;
     font-weight: bolder;
-    border: 4px solid black;
+    flex-direction: row-reverse;
+    align-items: flex-end;
+    background-color: rgb(91, 89, 89);
+    max-width: 344px;
+    overflow-x: auto;
+}
+
+#upperdisplay {
+    display: flex;
+    height: 35px;
+    font-size: 25px;
+    font-weight: bolder;
+    background-color: rgb(91, 89, 89);
+    max-width: 344px;
+    overflow-x: auto;
     flex-direction: row-reverse;
     align-items: center;
-    background-color: rgb(91, 89, 89);
+}
+
+#displaycontainer {
+    border: 4px solid black;
     border-radius: 5px;
 }
 /* Button animation */
-.buttonClear:hover {
-    background-color: rgb(150, 144, 144);
-}
 
-.buttonClear:active {
-    background-color: rgb(150, 144, 144);
-    box-shadow: 0 4px #666;
-    transform: translateY(3px);
-}
-
-.buttonNum:hover {
+.number:hover {
     background-color: rgb(239, 215, 174);
 }
 
-.buttonNum:active {
+.number:active {
     background-color: rgb(239, 215, 174);
     box-shadow: 0 4px #666;
     transform: translateY(3px);
 }
 
-.buttonOperator:hover {
+#zeroNum:hover {
+    background-color: rgb(239, 215, 174);
+}
+
+#zeroNum:active {
+    background-color: rgb(239, 215, 174);
+    box-shadow: 0 4px #666;
+    transform: translateY(3px);
+}
+
+.clear:hover {
+    background-color: rgb(121, 119, 116);
+}
+
+.clear:active {
+    background-color: rgb(121, 119, 116);
+    box-shadow: 0 4px #666;
+    transform: translateY(3px);
+}
+
+.operator:hover,
+.equal:hover,
+.delete:hover,
+.deci:hover {
     background-color: rgb(246, 166, 102);
 }
 
-.buttonOperator:active {
+.operator:active,
+.equal:active,
+.delete:active,
+.deci:active {
     background-color: rgb(246, 166, 102);
     box-shadow: 0 4px #666;
     transform: translateY(3px);
 }
 
 /*Button style */
-.buttonNum,
-.buttonOperator,
-.buttonClear {
+.clear,
+.number,
+.operator,
+.equal,
+.delete,
+.deci {
     height: 85px;
     width: 85px;
     border: 1px solid black;
@@ -77,35 +115,39 @@ body {
 }
 
 /*Button background color */
-.buttonOperator {
+.operator,
+.equal,
+.delete,
+.deci {
     background-color: rgb(238, 121, 25);
 }
 
-.buttonNum { 
+.number { 
     background-color: rgb(236, 201, 139);
 }
 
-.buttonClear {
+.clear {
     background-color: rgb(107, 106, 106);
 }
 
 /*Zero button width css */
 #zeroNum {
     width: 174px;
+    background-color: rgb(236, 201, 139);
 }
 
 
 /*Containers for button rows */
-.rowtwo,
-.rowthree,
-.rowfour {
+#rowtwo,
+#rowthree,
+#rowfour {
     display: flex;
     justify-content: space-between;
     gap: 4px;
 }
 
-.rowone,
-.rowfive {
+#rowone,
+#rowfive {
     display: flex;
     justify-content: flex-end;
     gap: 4px;
