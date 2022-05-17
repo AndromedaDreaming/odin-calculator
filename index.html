@@ -4,41 +4,44 @@
         <title>The Odin Project Calculator</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="style.css">
+        <script src="script.js" defer></script>
     </head>
     <body>
 
         <div id="maingrid">
-            <div class="display">000000</div>  
-                <div class="rowone">
-                    <input class="buttonClear" type="button" value="C">
-                    <input class="buttonOperator" type="button" value="+/-">
-                    <input class="buttonOperator" type="button" value="%">
-                    <input class="buttonOperator" type="button" value="/">
+            <div id="displaycontainer">
+                <div id="upperdisplay"></div>
+                <div id="display"></div>
+            </div>  
+                <div id="rowone">
+                    <button class="clear">C</button>
+                    <button class="delete">DEL</button>
+                    <button class="operator" value="%">%</button>
+                    <button class="operator" value="/">/</button>
                 </div>
-                <div class="rowtwo">
-                    <input class="buttonNum" type="button" value="7">
-                    <input class="buttonNum" type="button" value="8">
-                    <input class="buttonNum" type="button" value="9">
-                    <input class="buttonOperator" type="button" value="*">
+                <div id="rowtwo">
+                    <button class="number" value="7">7</button>
+                    <button class="number" value="8">8</button>
+                    <button class="number" value="9">9</button>
+                    <button class="operator" value="*">*</button>
                 </div>
-                <div class="rowthree">
-                    <input class="buttonNum" type="button" value="4">
-                    <input class="buttonNum" type="button" value="5">
-                    <input class="buttonNum" type="button" value="6">
-                    <input class="buttonOperator" type="button" value="-">
+                <div id="rowthree">
+                    <button class="number" value="4">4</button>
+                    <button class="number" value="5">5</button>
+                    <button class="number" value="6">6</button>
+                    <button class="operator" value="-">-</button>
                 </div>
-                <div class="rowfour">
-                    <input class="buttonNum" type="button" value="1">
-                    <input class="buttonNum" type="button" value="2">
-                    <input class="buttonNum" type="button" value="3">
-                    <input class="buttonOperator" type="button" value="+">
+                <div id="rowfour">
+                    <button class="number" value="1">1</button>
+                    <button class="number" value="2">2</button>
+                    <button class="number" value="3">3</button>
+                    <button class="operator" value="+">+</button>
                 </div>
-                <div class="rowfive">
-                    <input class="buttonNum" id="zeroNum" type="button" value="0">
-                    <input class="buttonOperator" type="button" value=".">
-                    <input class="buttonOperator" type="button" value="=">
+                <div id="rowfive">
+                    <button class="number" id="zeroNum" value="0">0</button>
+                    <button class="deci" value=".">.</button>
+                    <button class="equal" value="=">=</button>
                 </div>
         </div>
     </body>
-    <script src="script.js"></script>
 </html>
