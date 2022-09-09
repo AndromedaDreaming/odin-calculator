@@ -7,6 +7,8 @@ body {
     flex-direction: row-reverse;
     justify-content: center;
     font-family: 'Courier New', Courier, monospace;
+    background: rgb(251,136,201);
+    background: linear-gradient(90deg, rgba(251,136,201,1) 22%, rgba(59,194,165,1) 57%, rgba(0,212,255,1) 93%);
 }
 
 /* Main container */
@@ -15,11 +17,9 @@ body {
     height: 545px;
     justify-content: center;
     flex-direction: column;
-    border: 23px solid black;
     border-radius: 10px;
     padding: 15px;
     gap: 4px;
-    background-color: rgb(189, 186, 186);
 }
 
 /*Calculator display */
@@ -27,74 +27,49 @@ body {
     display: flex;
     height: 65px;
     font-size: 50px;
-    font-weight: bolder;
     flex-direction: row-reverse;
     align-items: flex-end;
-    background-color: rgb(91, 89, 89);
+    background-color: rgb(0, 0, 0);
     max-width: 344px;
     overflow-x: auto;
+    color: aliceblue;
 }
 
 #upperdisplay {
     display: flex;
     height: 35px;
-    font-size: 25px;
-    font-weight: bolder;
-    background-color: rgb(91, 89, 89);
+    font-size: 35px;
+    background-color: rgb(0, 0, 0);
     max-width: 344px;
     overflow-x: auto;
     flex-direction: row-reverse;
     align-items: center;
+    color: aliceblue;
 }
 
 #displaycontainer {
     border: 4px solid black;
-    border-radius: 5px;
 }
 /* Button animation */
 
-.number:hover {
-    background-color: rgb(239, 215, 174);
-}
-
-.number:active {
-    background-color: rgb(239, 215, 174);
-    box-shadow: 0 4px #666;
-    transform: translateY(3px);
-}
-
-#zeroNum:hover {
-    background-color: rgb(239, 215, 174);
-}
-
-#zeroNum:active {
-    background-color: rgb(239, 215, 174);
-    box-shadow: 0 4px #666;
-    transform: translateY(3px);
-}
-
-.clear:hover {
-    background-color: rgb(121, 119, 116);
-}
-
-.clear:active {
-    background-color: rgb(121, 119, 116);
-    box-shadow: 0 4px #666;
-    transform: translateY(3px);
-}
-
-.operator:hover,
+.number:hover,
+#zeroNum:hover,
 .equal:hover,
+.clear:hover,
+.operator:hover,
 .delete:hover,
 .deci:hover {
-    background-color: rgb(246, 166, 102);
+    background-color: rgb(164, 162, 160);
 }
 
-.operator:active,
+.clear:active,
+#zeroNum:active,
 .equal:active,
+.operator:active,
 .delete:active,
-.deci:active {
-    background-color: rgb(246, 166, 102);
+.deci:active,
+.number:active {
+    background-color: rgb(121, 119, 116);
     box-shadow: 0 4px #666;
     transform: translateY(3px);
 }
@@ -111,29 +86,34 @@ body {
     border: 1px solid black;
     gap: 4px;
     font-size: 30px;
-    border-radius: 5px;
-}
-
-/*Button background color */
-.operator,
-.equal,
-.delete,
-.deci {
-    background-color: rgb(238, 121, 25);
-}
-
-.number { 
-    background-color: rgb(236, 201, 139);
 }
 
 .clear {
-    background-color: rgb(107, 106, 106);
+    color: aliceblue;
+}
+/*Button background color */
+.operator,
+.delete,
+.deci {
+    background-color: rgb(226, 222, 218);
+}
+
+.equal {
+    background-color: rgb(198, 54, 124);
+    color: aliceblue;
+}
+.number { 
+    background-color: rgb(255, 255, 255);
+}
+
+.clear {
+    background-color: rgb(198, 54, 124);
 }
 
 /*Zero button width css */
 #zeroNum {
     width: 174px;
-    background-color: rgb(236, 201, 139);
+    background-color: rgb(255, 255, 255);
 }
 
 
