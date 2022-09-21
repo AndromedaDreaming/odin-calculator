@@ -19,10 +19,10 @@ const deciButton = document.querySelector(".deci")
 
 //Variables
 let userChoiceOperator = "";
-let userNumber1 = 0;
-let userNumber2 = 0;
+let userNumber1 = ""; //change back to 0
+let userNumber2 = ""; //change back to 0
 let currentValue = "";
-let totalValue = 0;
+let totalValue = ""; //return to 0 if doesnt work
 const deciValue = 3;
 
 //Arithmetic function
@@ -31,7 +31,6 @@ const operations = {
     subtract: (num1, num2) => num1 - num2,
     multiply: (num1, num2) => num1 * num2,
     divide: (num1, num2) =>  num1 / num2,
-    modulo: (num1, num2) => num1 % num2,
 }
 
 //Calculates user input-called by the operatorBtn event listener and equalBtn event listener
@@ -52,9 +51,6 @@ function operate(value) {
         case '/':
             userChoiceOperator = "divide";
             break;
-        case '%':
-            userChoiceOperator = "modulo";
-            break;
         case '+':
             userChoiceOperator = "add";
             break;   
@@ -65,7 +61,7 @@ function operate(value) {
 numberButtons.forEach((button) => {
     button.addEventListener("click", () => {
         if(currentValue.length >= 9) {
-            userNumber2 = 0
+            userNumber2 = "";
             return;
         }  
         currentValue += button.textContent;
@@ -81,13 +77,12 @@ numberButtons.forEach((button) => {
 operatorButtons.forEach((buttons) => {
     buttons.addEventListener("click", () => {
         operate(buttons.textContent);
-        if((userNumber1 != 0) && (userChoiceOperator != "")) {
+        if((userNumber1 != "") && (userChoiceOperator != "")) {
             upperDisplayWindow.textContent += (userNumber1 + buttons.textContent);
             mainDisplayWindow.textContent = currentValue;
         }
         checkOperators();
-    });
-    console.log(currentValue, userChoiceOperator);   
+    }); 
 });
 
 function checkOperators () { //doesnt do anything
@@ -104,7 +99,7 @@ equalButton.addEventListener("click", () => {
         upperDisplayWindow.textContent += currentValue;
     }
     if(upperDisplayWindow.textContent.length >= 19){ //works
-        document.querySelector("#upperdisplay").style.fontSize = "20px";
+        document.querySelector("#upperdisplay").style.fontSize = "25px";
     }
     equals();
 });
@@ -112,7 +107,7 @@ equalButton.addEventListener("click", () => {
 //Decimal button even listener
 deciButton.addEventListener("click", () => {
     if(mainDisplayWindow.textContent.length == 0) {
-        userNumber2 = 0;
+        userNumber2 = "";
     }
     if(!currentValue.includes(".") || currentValue == ""){
         currentValue += ".";
@@ -132,7 +127,7 @@ clearButton.addEventListener("click", () => {
 //Equals function
 //make large numbers scientific notation
 function equals() {
-    if( userNumber2 == 0){
+    if( userNumber2 == ""){
         userNumber2 = parseFloat(currentValue);
     } else {
         userNumber1 = (currentValue == "") ? 0 : parseFloat(currentValue);
@@ -140,7 +135,7 @@ function equals() {
             [userNumber1, userNumber2] = [userNumber2, userNumber1];
         };
     };
-    if (userChoiceOperator == "divide" && userNumber2 == 0){
+    if (userChoiceOperator == "divide" && userNumber2 == ""){
         document.querySelector("#upperdisplay").style.fontSize = "20px";
         upperDisplayWindow.textContent = "Cannot divide by zero";
         return;
@@ -149,16 +144,17 @@ function equals() {
         totalValue = operations[userChoiceOperator](userNumber1,userNumber2);
     } else {
         if(isNaN(parseFloat(currentValue))){
-            currentValue = 0;
+            currentValue = "";
         }
         totalValue = currentValue;
     }
-    if(totalValue.length <= 10) { //resizes font for large numbers
+    
+    if(currentValue.length >= 9) { //resizes font for large numbers
+        document.querySelector("#display").style.fontSize = "30px";
         mainDisplayWindow.textContent = totalValue;
         mainDisplayWindow.textContent = +(Math.round(totalValue + `e+${deciValue}`) + `e-${deciValue}`);
         userNumber2 = parseFloat(totalValue);
     } else {
-        document.querySelector("#display").style.fontSize = "30px";
         mainDisplayWindow.textContent = totalValue;
         mainDisplayWindow.textContent = +(Math.round(totalValue + `e+${deciValue}`) + `e-${deciValue}`);
         userNumber2 = parseFloat(totalValue);
@@ -169,9 +165,9 @@ function equals() {
 function clearMain() {
     mainDisplayWindow.textContent = "";
     currentValue = "";
-    userNumber1 = 0;
-    userNumber2 = 0;
-    totalValue = 0;
+    userNumber1 = "";
+    userNumber2 = "";
+    totalValue = "";
     userChoiceOperator = "";
     document.querySelector("#display").style.fontSize = "50px";
 }
@@ -179,9 +175,9 @@ function clearMain() {
 function clearUpper() {
     upperDisplayWindow.textContent = "";
     currentValue = "";
-    userNumber1 = 0;
-    userNumber2 = 0;
-    totalValue = 0;
+    userNumber1 = "";
+    userNumber2 = "";
+    totalValue = "";
     userChoiceOperator = "";
     document.querySelector("#upperdisplay").style.fontSize = "35px";
 }
