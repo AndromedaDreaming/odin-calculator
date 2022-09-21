@@ -3,6 +3,8 @@
 //then the currentvalue is stored
 //then maindisplaywindow is cleared
 
+///work through currentvalue and usernumber2 issue-- after basic math currentvalue is the last value
+//and usernumber2 is also the totalvalue-- both of which display the same number
 
 
 // DOM
@@ -17,14 +19,13 @@ const deciButton = document.querySelector(".deci")
 
 //Variables
 let userChoiceOperator = "";
-let calculatedResult = 0;
 let userNumber1 = 0;
 let userNumber2 = 0;
 let currentValue = "";
 let totalValue = 0;
 const deciValue = 3;
 
-// Add function
+//Arithmetic function
 const operations = {
     add: (num1, num2) => num1 + num2,
     subtract: (num1, num2) => num1 - num2,
@@ -34,11 +35,10 @@ const operations = {
 }
 
 //Calculates user input-called by the operatorBtn event listener and equalBtn event listener
-//Remove operand from maindisplaywindow
-//push current value to uppersdisplay after operator is clicked
 function operate(value) {
     if(userChoiceOperator != ""){
         equals();
+        return;
     }
     userNumber1 = (currentValue == "") ? 0 : parseFloat(currentValue);
     currentValue = "";
@@ -59,41 +59,52 @@ function operate(value) {
             userChoiceOperator = "add";
             break;   
     }
-    
 }
 
 //number button event listener- 
-//!!clear screen but save userNumber1/current value!!
 numberButtons.forEach((button) => {
     button.addEventListener("click", () => {
         if(currentValue.length >= 9) {
             userNumber2 = 0
             return;
-        }
+        }  
         currentValue += button.textContent;
         mainDisplayWindow.textContent += button.textContent;
     });
+    console.log(currentValue, userNumber1, userNumber2, userChoiceOperator);
 });
    
 //Operator button event listener-
+//remove nan when operator double clicked-- the eventlistener sees second operator click as userNumber2
+//may be best to turn off click then resume
+//when calculating 1+1+1 currentvalue
 operatorButtons.forEach((buttons) => {
     buttons.addEventListener("click", () => {
-        if((userNumber1 != 0) && (userChoiceOperator != "")) {
-            userNumber2 = 0;
-        }
         operate(buttons.textContent);
         if((userNumber1 != 0) && (userChoiceOperator != "")) {
-            upperDisplayWindow.textContent = (userNumber1 + buttons.textContent);
+            upperDisplayWindow.textContent += (userNumber1 + buttons.textContent);
             mainDisplayWindow.textContent = currentValue;
         }
-        return;
-    });     
+        checkOperators();
+    });
+    console.log(currentValue, userChoiceOperator);   
 });
+
+function checkOperators () { //doesnt do anything
+    if(upperDisplayWindow.textContent.length != 0) {
+        return true;
+    }else {
+        return false;
+    }
+};
     
 //equal button event listener-
 equalButton.addEventListener("click", () => {
-    if(currentValue != 0){
+    if(currentValue != ""){ //needed for calc
         upperDisplayWindow.textContent += currentValue;
+    }
+    if(upperDisplayWindow.textContent.length >= 19){ //works
+        document.querySelector("#upperdisplay").style.fontSize = "20px";
     }
     equals();
 });
@@ -130,10 +141,8 @@ function equals() {
         };
     };
     if (userChoiceOperator == "divide" && userNumber2 == 0){
-
-        //fix size of "cannot divide by zero" 
+        document.querySelector("#upperdisplay").style.fontSize = "20px";
         upperDisplayWindow.textContent = "Cannot divide by zero";
-        clearMain();
         return;
     }
     if (userChoiceOperator != ""){
@@ -144,9 +153,16 @@ function equals() {
         }
         totalValue = currentValue;
     }
-    mainDisplayWindow.textContent = totalValue;
-    mainDisplayWindow.textContent = +(Math.round(totalValue + `e+${deciValue}`) + `e-${deciValue}`);
-    userNumber2 = parseFloat(totalValue);
+    if(totalValue.length <= 10) { //resizes font for large numbers
+        mainDisplayWindow.textContent = totalValue;
+        mainDisplayWindow.textContent = +(Math.round(totalValue + `e+${deciValue}`) + `e-${deciValue}`);
+        userNumber2 = parseFloat(totalValue);
+    } else {
+        document.querySelector("#display").style.fontSize = "30px";
+        mainDisplayWindow.textContent = totalValue;
+        mainDisplayWindow.textContent = +(Math.round(totalValue + `e+${deciValue}`) + `e-${deciValue}`);
+        userNumber2 = parseFloat(totalValue);
+    }
 };
 
 //Clear function
@@ -157,13 +173,27 @@ function clearMain() {
     userNumber2 = 0;
     totalValue = 0;
     userChoiceOperator = "";
+    document.querySelector("#display").style.fontSize = "50px";
 }
 
 function clearUpper() {
     upperDisplayWindow.textContent = "";
+    currentValue = "";
+    userNumber1 = 0;
+    userNumber2 = 0;
+    totalValue = 0;
+    userChoiceOperator = "";
+    document.querySelector("#upperdisplay").style.fontSize = "35px";
 }
 
-//Delete button works
+//Delete button doesnt work on complicated math
+//if total has been calculated the delete button should clear instead
+//if user deletes on current value and chooses another number it concatenates instead of recalculating
+//values of currentvalue are still held in upper display
 function deleteUserInput() {
-    mainDisplayWindow.textContent = mainDisplayWindow.textContent.slice(0, -1);
+    if(currentValue != "") {
+         mainDisplayWindow.textContent = mainDisplayWindow.textContent.slice(0, -1);
+         currentValue = mainDisplayWindow.textContent;
+         return;
+    }
 };
